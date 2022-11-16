@@ -4,6 +4,8 @@ const { Buffer } = require('buffer');
 const fileSystem = require('fs');
 const axios = require('axios');
 var FormData = require('form-data');
+const parseComments = require('parse-html-comments')
+
 
 async function upgrade(mail, layout, data) {
 
@@ -102,5 +104,25 @@ function makeTemplate(layout, content, replaceWord) {
 
 (async () => {
     const htmlFile = "test/templates/content/test-1.html";
+    const templatesDir = "test/templates/content";
 
+    var content = fileSystem.readFileSync(htmlFile, { encoding: 'utf-8' });
+
+    var comments = parseComments(content);
+
+    var comment = comments.matches[0].groups.commentOnly.replace("<!--", "").replace("-->", "").replace(/(^\s*(?!.+)\n+)|(\n+\s+(?!.+)$)/g, "").trim();
+    // console.log(comments.matches[0].groups.commentOnly.replace("<!--", "").replace("-->", "").replace(/(^\s*(?!.+)\n+)|(\n+\s+(?!.+)$)/g, "").trim());
+    console.log(comment);
+    try {
+        var json = JSON.parse(comment);
+        console.log(json);
+    } catch(e) {
+        console.error("Not is valid json");
+    }
+    
+    // var files = [];
+    var files = await fileSystem.promises.readdir(templatesDir);
+
+    var htmls = files.filter((file) => { return file.substring(file.length-5) === '.html'; });
+    console.log(htmls);
 })();

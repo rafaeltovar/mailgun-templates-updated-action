@@ -102,8 +102,8 @@ function makeTemplate(layout, content, replaceWord) {
 
 (async () => {
     try {
-        const configFile = core.getInput('config-file');
-        const layoutFile = core.getInput('layout-file');
+        // const configFile = core.getInput('config-file');
+        // const layoutFile = core.getInput('layout-file');
 
         const mailgun = {
             apiKey: core.getInput('mailgun-api-key'),
@@ -114,16 +114,17 @@ function makeTemplate(layout, content, replaceWord) {
         };
     
         // read config file
-        let rawconfig = fileSystem.readFileSync(configFile);
-        let config = JSON.parse(rawconfig);
+        // let rawconfig = fileSystem.readFileSync(configFile);
+        // let config = JSON.parse(rawconfig);
     
         // read layout
-        let layoutContent = fileSystem.readFileSync(layoutFile, { encoding: 'utf-8' });
-        let layout = {
-            replace: core.getInput('layout-content-word'),
-            content: layoutContent
-        };
+        // let layoutContent = fileSystem.readFileSync(layoutFile, { encoding: 'utf-8' });
+        // let layout = {
+        //     replace: core.getInput('layout-content-word'),
+        //     content: layoutContent
+        // };
 
+        // fs.readdir(directoryPath, function (err, files) {
         for(const c of config) {
             await upgrade(mailgun, layout, c);
         }
