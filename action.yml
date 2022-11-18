@@ -1,5 +1,5 @@
 name: 'Mailgun templates updater action'
-description: 'Create a new version for a Mailgun email template using the content of an HTML file, and set it as the active version.'
+description: 'Create a new version for a Mailgun email template using the content of HTML files, and set it as the active version.'
 branding:
   icon: 'mail'  
   color: 'red'
@@ -7,7 +7,7 @@ inputs:
   mailgun-api-key:
     description: 'Mailgun Primary Account API key'
     required: true
-  mailgun-host:
+  mailgun-api-host:
     description: 'Mailgun Host. Default: api.mailgun.net'
     required: false
     default: api.mailgun.net
@@ -15,20 +15,20 @@ inputs:
     description: 'Domain Name the template is registered under'
     required: true
   mailgun-template-versions-limit:
-    description: 'Number of template versions limit (the last ones will be deleted)'
+    description: 'Number of template versions saved limit (the last ones will be deleted)'
     required: false
     default: '6'
-  config-file: 
-    description: 'Path to file containing the templates configuration'
+  templates-directory:
+    description: 'Path of templates directory'
     required: true
-  layout-file:
+  layout:
     description: 'Path to file to layout'
     required: false
-    default: './src/layout.html'
-  layout-content-word:
-    description: 'Word for replace content in layout'
-    required: false
-    default: '%CONTENT%'
+    default: ''
+  # synchronize:
+  #   description: 'Remove templates in Mailgun if not exists in code'
+  #   required: false
+  #   default: 'N'
 runs:
   using: 'node16'
   main: 'src/index.js'
