@@ -1,4 +1,4 @@
-# Mailgun templates updater action
+# Mailgun templates updater GitHub action
 
 Create a new version for a Mailgun email template using the content of an HTML file, and set it as the active version.
 
@@ -13,4 +13,6 @@ Create a new version for a Mailgun email template using the content of an HTML f
 | `mailgun-domain-name` | Domain Name the template is registered under | Yes | mail.mydomain.com |
 | `mailgun-template-versions-limit` | Number of versions you want to keep in the template. | No | 6 |
 | `templates-directory` | Path where HTML templates are saved | Yes | src/templates |
-| `layout`             | HTML Layout. The content of the templates will be replaced in the `%CONTENT%` string of the layout. | No | src/layout.html | 
+| `layout`             | HTML Layout. The content of the templates will be replaced in the `%CONTENT%` string of the layout. | No | src/layout.html |
+
+
