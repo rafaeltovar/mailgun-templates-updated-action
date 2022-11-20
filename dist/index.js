@@ -10744,7 +10744,7 @@ const { Buffer } = __nccwpck_require__(4300);
 var FormData = __nccwpck_require__(4334);
 
 function client(key, host, domain, limit) {
-    return new MailgunTemplateClient(key, host, domain, limit);
+    return new MailgunTemplatesClient(key, host, domain, limit);
 }
 
 
