@@ -18999,7 +18999,7 @@ async function update(client, template) {
         const templateLayout = core.getInput('layout');
         const commit = github.context.sha;
         
-        const gun = mailgun.client(
+        const client = mailgun.client(
             core.getInput('mailgun-api-key'),
             core.getInput('mailgun-domain-name'),
             core.getInput('mailgun-host'),
@@ -19010,7 +19010,7 @@ async function update(client, template) {
 
         var htmls = files.filter((file) => { return file.substring(file.length-5) === '.html'; });
         for(const html of htmls) {
-            await update(mailgun, template.parse(templatesDir + "/" + html, commit, templateLayout));
+            await update(client, template.parse(templatesDir + "/" + html, commit, templateLayout));
         }
 
     } catch (err) {
