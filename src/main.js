@@ -28,7 +28,7 @@ async function update(client, template) {
 
 (async () => {
     try {
-        const templatesDirs = core.getInput('templates-directory');
+        const templatesDir = core.getInput('templates-directory');
         const templateLayout = core.getInput('layout');
         const commit = github.context.sha;
         
