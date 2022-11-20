@@ -3,7 +3,7 @@ const { Buffer } = require('buffer');
 var FormData = require('form-data');
 
 function client(key, host, domain, limit) {
-    return new MailgunTemplateClient(key, host, domain, limit);
+    return new MailgunTemplatesClient(key, host, domain, limit);
 }
 
 
